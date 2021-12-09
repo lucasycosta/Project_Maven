@@ -1,3 +1,4 @@
+
 package projeto.maven.model;
 
 import javax.persistence.Entity;

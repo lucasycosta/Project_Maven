@@ -1,3 +1,4 @@
+
 package projeto.maven.persistence;
 
 import java.util.Scanner;
@@ -6,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import projeto.hibernate.model.Filme;
+import projeto.maven.model.Filme;
 
 public class FilmeDao {
 	public static void main(String[] args) {
@@ -15,7 +16,7 @@ public class FilmeDao {
 		char resp = 0;
 		
 		// CONEXÃO COM O BANCO DE DADOS
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("filme2");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("filme3");
 		EntityManager em = emf.createEntityManager();
 		
 		// INICIA UMA TRANSANÇÃO COM O BANCO DE DADOS
