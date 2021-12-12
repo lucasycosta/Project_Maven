@@ -5,7 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import lombok.Data;
+
 @Entity
+@Data
 public class Filme {
 	@Id
 	@GeneratedValue
@@ -21,7 +24,7 @@ public class Filme {
 		this.nome = nome;
 		this.genero = genero;
 	}
-	
+	/*
 	public String getNome() {
 		return nome;
 	}
@@ -42,5 +45,5 @@ public class Filme {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+	*/
 }
