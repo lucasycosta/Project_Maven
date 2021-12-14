@@ -2,14 +2,18 @@
 package projeto.maven.persistence;
 
 import java.util.Scanner;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.apache.log4j.Logger;
+
 import projeto.maven.model.Filme;
 
 public class FilmeDao {
+	
+	final static Logger logger = Logger.getLogger(FilmeDao.class);
+	
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		Filme f1 = new Filme();
@@ -25,7 +29,7 @@ public class FilmeDao {
 		do {
 			System.out.print("\n O que você deseja fazer?");
 			System.out.println("\n |1 - incluir novo filme" + 
-							   "\n |2 - consultar file existente" + 
+							   "\n |2 - consultar filme existente" + 
 							   "\n |3 - alterar os dados de um filme" + 
 							   "\n |4 - deletar o cadastro de um filme");
 			System.out.print("Opção desejada: ");
@@ -34,16 +38,16 @@ public class FilmeDao {
 			switch (opcao) {
 			case 1: {
 				// ENTRADA DE DADOS
-				System.out.println("digite um nome: ");
+				System.out.println("Digite um nome: ");
 				f1.setNome(input.next());
-				System.out.println("digite um genero: ");
+				System.out.println("Digite um genero: ");
 				f1.setGenero(input.next());
 				em.persist(f1);
 
 				// CONFIRMA AS ALTERAÇÕES
 				em.getTransaction().commit();
-				System.out.println("Filme adicionado!!!");
-
+				
+				System.out.println("Filme incluido com sucesso!!");
 				break;
 			}
 
@@ -56,7 +60,7 @@ public class FilmeDao {
 					System.out.println("Nome do Filme: " + f.getNome());
 					System.out.println("Genero do Filme: " + f.getGenero());
 				} catch (Exception e) {
-					System.out.println("\n ID invalido!!!");
+					logger.error("ID ivalido", e);
 				}
 				break;
 			}
@@ -80,7 +84,7 @@ public class FilmeDao {
 					System.out.println("Dados atualizados!!!");
 					
 				} catch (Exception e) {
-					System.out.println("\n ID invalido!!!");
+					logger.error("ID ivalido", e);
 				}
 				break;
 			}
@@ -95,7 +99,7 @@ public class FilmeDao {
 					System.out.println("Filme Excluido!!!!");
 					
 				} catch (Exception e) {
-					System.out.println("\n ID invalido!!!");
+					logger.error("ID ivalido", e);
 				}
 				break;
 			}
